@@ -1,0 +1,45 @@
+.canvas-container {
+    border: 2px solid rgba(100, 100, 100, 0.5);
+    margin-left: 20px;
+}
+
+#right-pane {
+    max-height: calc(95vh - 70px);
+    overflow-y: auto;
+}
+
+#box-list {
+    min-width: 713px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+#left-pane {
+    min-width: 670px;
+}
+
+body {
+    width: 100vw;
+}
+
+.box-remove-button {
+    color: #ff3f38;
+}
+
+.box-selected {
+    border: 1px solid black;
+}
+
+.nel-button {
+    text-transform: none !important;
+    background-color: white!important;
+}
+
+#buttons-div {
+    width: 654px;
+    margin-left: 20px;
+}
+
+#merge-button {
+    display: none;
+}

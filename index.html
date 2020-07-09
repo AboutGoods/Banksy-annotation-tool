@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banksy - Image annotation tool</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
+
+
+    <script type="module" src="js/State.js"></script>
+    <script type="module" src="js/LinkingService.js"></script>
+    <script type="module" src="js/BoxService.js"></script>
+    <script type="module" src="js/FileService.js"></script>
+    <script type="module" src="/js/main.js" ></script>
+</head>
+<body>
+    <div class="uk-width-1-1">
+        <div id="header" class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle uk-margin-top">
+            <div class="uk-width-1-2 uk-flex uk-flex-between uk-flex-middle">
+                <a id="previous" class="uk-margin-left uk-button uk-button-text"><< Previous</a>
+                <div>
+                    <span id="current-image"></span>
+                    <button class="uk-button uk-button-primary uk-button-small uk-margin-left" id="export-button"><span uk-icon="download"></span>Save output</button>
+                </div>
+                <a id="next" class="uk-margin-right uk-button uk-button-text">Next >></a>
+            </div>
+            <button id="help-button" uk-toggle="target: #help-modal" class="uk-button uk-button-primary uk-button-small uk-position-top-right uk-margin-top uk-margin-right"><span uk-icon="question"></span></button>
+        </div>
+
+        <hr>
+
+        <div class="uk-flex uk-flex-row">
+            <div class="uk-width-1-2" id="left-pane">
+                <canvas id="canvas" width="650" height="800"></canvas>
+                <div class="uk-flex uk-flex-between" id="buttons-div">
+
+                    <button class="uk-button uk-button-primary uk-button-small" id="show-links-button">Show selected NELs only</button>
+                    <button class="uk-button uk-button-primary uk-button-small" id="toggle-merging-button">Enable box merging mode</button>
+                    <button class="uk-button uk-button-primary uk-button-small" id="merge-button">Merge</button>
+                </div>
+            </div>
+            <div id="right-pane" class="uk-width-1-2">
+                <div id="box-list" class="uk-margin-large-right">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="links-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Entity linkings <span uk-icon="link"></span></h2>
+            <div id="links-modal-content" class="uk-card uk-card-default uk-margin-top">
+            </div>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+            </p>
+        </div>
+    </div>
+
+
+    <div id="help-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Help</h2>
+                <p>You can zoom in the image using the mouse wheel and move by Ctlr/Cmd + Click and move on the image or with the arrow keys</p>
+                <p>You can use the Delete or Backspace keys to delete the selected box</p>
+                <p>You can press Ctrl/Cmd + S to save the image output</p>
+                <p>You can merge boxes in order to make one box from multiple others. Click on the "Enable box merging mode" button, then select the boxes you want to merge by drag-clicking with the mouse. Then press the "M" key or the "Merge" button to merge the boxes</p>
+
+                <h3>You can also use the following keys to change the label of the selected box :</h3>
+                <p>
+                    - 1 : Label <br />
+                    - 2 : Price <br />
+                    - 3 : Bundle <br />
+                    - 4 : Misc <br />
+                    - 5 : Payment <br />
+                    - 6 : Barcode <br />
+                    - 7 : Brand <br />
+                    - 8 : Location <br />
+                    - 9 : Date <br />
+                    - 0 : Phone <br />
+                    - ) (key at the right of the 0) : Person
+                </p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
