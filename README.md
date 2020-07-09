@@ -1,10 +1,10 @@
 # Banksy annotation tool 
-<p align="center">
+
 ![GitHub stars](https://img.shields.io/github/stars/AboutGoods/Banksy-annotation-tool)
 ![GitHub issues](https://img.shields.io/github/issues/AboutGoods/Banksy-annotation-tool)
 ![GitHub](https://img.shields.io/github/license/AboutGoods/Banksy-annotation-tool)
 ![GitHub contributors](https://img.shields.io/github/contributors/AboutGoods/Banksy-annotation-tool)
-</p>
+
 
 ## 📃 Description
 
