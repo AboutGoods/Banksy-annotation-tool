@@ -18,6 +18,9 @@ You can then add the JSON file to your `source` folder (see the Usage section be
 
 You can learn more about the Python client [here](/vision/README.md).
 
+## Screenshot
+![Screenshot demo](demo.png)
+
 ## 🔧 Getting Started 
 
 ### Requirements
