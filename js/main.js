@@ -89,38 +89,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     BoxService.deleteBox(State.selectedBoxId)
                     State.canvas.historySaveAction()
                     break
+                case "digit0":
+                case "numpad0":
+                    BoxService.changeLabel(State.selectedBoxId, "header")
+                    break
                 case "digit1":
-                    BoxService.changeLabel(State.selectedBoxId, "label")
+                case "numpad1":
+                    BoxService.changeLabel(State.selectedBoxId, "key")
                     break
                 case "digit2":
-                    BoxService.changeLabel(State.selectedBoxId, "price")
+                case "numpad2":
+                    BoxService.changeLabel(State.selectedBoxId, "value")
                     break
                 case "digit3":
-                    BoxService.changeLabel(State.selectedBoxId, "bundle")
-                    break
-                case "digit4":
-                    BoxService.changeLabel(State.selectedBoxId, "misc")
-                    break
-                case "digit5":
-                    BoxService.changeLabel(State.selectedBoxId, "payment")
-                    break
-                case "digit6":
-                    BoxService.changeLabel(State.selectedBoxId, "barcode")
-                    break
-                case "digit7":
-                    BoxService.changeLabel(State.selectedBoxId, "brand")
-                    break
-                case "digit8":
-                    BoxService.changeLabel(State.selectedBoxId, "loc")
-                    break
-                case "digit9":
-                    BoxService.changeLabel(State.selectedBoxId, "date")
-                    break
-                case "digit0":
-                    BoxService.changeLabel(State.selectedBoxId, "phone")
-                    break
-                case "minus":
-                    BoxService.changeLabel(State.selectedBoxId, "pers")
+                case "numpad3":
+                    BoxService.changeLabel(State.selectedBoxId, "others")
                     break
                 default:
                     break

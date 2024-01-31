@@ -6,18 +6,10 @@ const LINK_BUTTON_OFFSET = 10;
 
 //This is a combination of label/color used for coloring the boxes. Feel free to change this, it will modify the colors everywhere.
 const boxColors = {
-    brand: "rgb(170,0,0)",
-    loc: "rgb(170,80,13)",
-    pers: "rgb(170,153,21)",
-    total: "rgb(103,170,0)",
-    date: "rgb(29,170,5)",
-    label: "rgb(24,170,135)",
-    price: "rgb(36,124,170)",
-    bundle: "rgb(0,51,170)",
-    phone: "rgb(49,0,170)",
-    misc: "rgb(116,0,170)",
-    payment: "rgb(0,0,0)",
-    barcode: "rgb(63,62,64)",
+    header: "rgb(148, 0, 211)",
+    key: "rgb(220, 0, 0)",
+    value: "rgb(24, 116, 205)",
+    others: "rgb(255, 165, 0)",
 }
 
 fabric.Object.prototype.borderScaleFactor = 2
@@ -66,7 +58,7 @@ export default class BoxService {
                 box: new fabric.Rect({
                     left: State.mouseOriginX,
                     top: State.mouseOriginY,
-                    fill: 'rgb(220, 0, 0)',
+                    fill: 'rgb(0, 220, 0)',
                     opacity: 0.3,
                     id: State.currentBoxId,
                     type: "box",
@@ -176,18 +168,10 @@ export default class BoxService {
                         <label for="label">Type</label>
                         <select class="uk-select uk-form-small" id='label-${box.box.id}' name="label">
                         <option value=""></option>
-                        <option value="brand">Brand</option>
-                        <option value="loc">Location</option>
-                        <option value="pers">Person</option>
-                        <option value="total">Total</option>
-                        <option value="date">Date</option>
-                        <option value="label">Label</option>
-                        <option value="price">Price</option>
-                        <option value="bundle">Bundle</option>
-                        <option value="phone">Phone</option>
-                        <option value="misc">Misc</option>
-                        <option value="payment">Payment</option>
-                        <option value="barcode">Barcode</option>
+                        <option value="header">header</option>
+                        <option value="key">key</option>
+                        <option value="value">value</option>
+                        <option value="others">others</option>
                         </select>
                     </div>
                     <div>
@@ -373,8 +357,8 @@ export default class BoxService {
                     fill: args.label !== undefined ?
                         boxColors[args.label.toLowerCase()] !== undefined ?
                             boxColors[args.label.toLowerCase()] :
-                            'rgb(220, 0, 0)' :
-                        'rgb(220, 0, 0)',
+                            'rgb(0, 220, 0)' :
+                        'rgb(0, 220, 0)',
                     opacity: 0.2,
                     id: id,
                     type: "box",
