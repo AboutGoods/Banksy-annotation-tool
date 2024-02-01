@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function setImage(path) {
     return new Promise((resolve, reject) => {
-        //Warning, the image can be loaded a little after, so if there is already things on the canvas,
+        // (Solved) Warning, the image can be loaded a little after, so if there is already things on the canvas,
         // the image can be placed on top of it
         new fabric.Image.fromURL(path, function(oImage){
             State.image = oImage
@@ -315,29 +315,36 @@ function setImage(path) {
             //So we send the image to the background
             State.image.sendToBack();
 
-            //Loading data in local storage if exists
-            if (window.localStorage.getItem(FileService.getImageName()) !== null) {
-                UIkit.modal.confirm("Data has been found in local storage. Do you want to import it ?")
-                    .then(() => {
-                        //Getting the stored data in the localstorage
-                        let objects = JSON.parse(window.localStorage.getItem(FileService.getImageName()))
-                        //And creating the boxes and links
-                        BoxService.createBoxesFromArray(objects)
-                        LinkingService.createLinksFromArray(objects)
-                        resolve()
-                    },
-                        //Otherwise getting data from file
-                        () => {
+            // Ensuring the image is rendered in the canvas before proceeding
+            State.canvas.renderAll();
+
+            // Function to handle the loading of data (local storage or file)
+            function loadData() {
+                if (window.localStorage.getItem(FileService.getImageName()) !== null) {
+                    UIkit.modal.confirm("Data has been found in local storage. Do you want to import it?")
+                        .then(() => {
+                            // Getting the stored data in the localstorage
+                            // console.log(`Load ${FileService.getImageName()} from local storage.`)
+                            let objects = JSON.parse(window.localStorage.getItem(FileService.getImageName()))
+                            //And creating the boxes and links
+                            BoxService.createBoxesFromArray(objects)
+                            LinkingService.createLinksFromArray(objects)
+                            resolve()
+                        }, () => { //Otherwise getting data from file
+                            // console.log(`Load ${FileService.getImageName()} from OCR json.`)
                             FileService.loadJson()
                             resolve()
-                        })
-
-                return
+                        });
+                } else {
+                    // Loading from json file otherwise
+                    FileService.loadJson();
+                    resolve();
+                }
             }
-            //Loading from json file otherwise
-            FileService.loadJson()
-            resolve()
-    })
+
+            // Use setTimeout to allow the UI thread to update with the image before loading data
+            setTimeout(loadData, 0);
+        })
     });
 }
 
